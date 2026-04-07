@@ -5,11 +5,14 @@ import ChessCore
 var game = Game()
 print(game)
 
-while !game.isGameOver {
+while case .toMove = game.status {
   print("\n?", terminator: " ")
-  guard let line = readLine() else { continue }
+  guard let line = readLine() else {
+    continue
+  }
+
   do {
-    try game.move(line)
+    try game.play(line)
     print(game)
   } catch {
     print(error.localizedDescription)
