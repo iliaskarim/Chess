@@ -1,6 +1,7 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 import ChessCore
+import Darwin
 
 var game = Game()
 print(game)
@@ -15,6 +16,7 @@ while case .toMove = game.status {
     try game.play(line)
     print(game)
   } catch {
+    fputs("\u{7}", stderr)
     print(error.localizedDescription)
   }
 }
