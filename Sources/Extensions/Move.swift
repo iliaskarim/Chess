@@ -40,6 +40,11 @@ extension Move {
       let captureXRange = Range(match.range(at: 4), in: notation)
       let isCapture = captureXRange != nil
 
+      // SAN requires a pawn capture to include the source file (e.g. "exd5", not "xd5").
+      if figure == .pawn, isCapture, squareFile == nil {
+        throw NotationError.unparseable
+      }
+
       // Group 5: destination square (required).
       guard let targetSquareRange = Range(match.range(at: 5), in: notation),
             let targetSquare = Square(notation: String(notation[targetSquareRange]))
