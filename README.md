@@ -13,6 +13,20 @@ A command-line chess game that demos the capabilities of [`ChessCore`](https://g
 swift run
 ```
 
+## Run with Docker
+
+Build the image:
+
+```bash
+docker build -t chess-cli .
+```
+
+Run the CLI (interactive mode):
+
+```bash
+docker run --rm -it chess-cli
+```
+
 ## Example output
 
 ```text
