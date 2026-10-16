@@ -21,10 +21,16 @@ Play White against [Casanchess](https://github.com/iliaskarim/CasanchessSwift) a
 swift run Chess --casanchess 4
 ```
 
-Add `--black` to take Black. Casanchess plays White and moves first:
+Add `--black` to take Black. Casanchess plays White:
 
 ```bash
 swift run Chess --casanchess 4 --black
+```
+
+Start from a FEN. Quote the string:
+
+```bash
+swift run Chess --fen '8/8/8/2p5/k7/8/2N5/KN6 w - - 0 1' --casanchess 5 --black
 ```
 
 ## Syzygy tablebases

@@ -1,5 +1,5 @@
 {
-  "originHash" : "300f2fc61e4ba53edaaba3416afbccbc246434b1e581b637e414369fe77d32c1",
+  "originHash" : "aeed5c802803eef68c27d2ccb70325880d233549ca6ee1a24f09db7eb96ff81c",
   "pins" : [
     {
       "identity" : "casanchessswift",
@@ -16,7 +16,7 @@
       "location" : "git@github.com:iliaskarim/ChessCore.git",
       "state" : {
         "branch" : "develop",
-        "revision" : "93a8fd06a83df10034c5d5a6f2c42652415ed93f"
+        "revision" : "86b2c9c69da146ea7a1082c8639e4a51295f1746"
       }
     }
   ],

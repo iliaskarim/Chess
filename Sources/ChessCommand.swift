@@ -3,11 +3,12 @@ import Darwin
 import Foundation
 
 private let usage = """
-Usage: Chess [--casanchess <depth>] [--black]
+Usage: Chess [--fen <fen>] [--casanchess <depth>] [--black]
 
 Type each move in standard algebraic notation at the ? prompt.
+--fen <fen>           Start from a FEN. Quote it; the string contains spaces.
 --casanchess <depth>  Play against Casanchess. <depth> is the search depth, 1 or more.
---black               Play Black. Casanchess plays White and moves first.
+--black               Play Black. Casanchess plays White.
 """
 
 private struct UsageError: Error, LocalizedError {
@@ -18,10 +19,12 @@ private struct UsageError: Error, LocalizedError {
 
 private struct Options {
   var engineDepth: Int?
+  var fen: String?
   var humanColor: Piece.Color
 
   init(arguments: [String]) throws {
     var engineDepth: Int?
+    var fen: String?
     var humanColor: Piece.Color = .white
     var index = arguments.startIndex
 
@@ -32,6 +35,14 @@ private struct Options {
       switch argument {
       case "--help", "-h":
         throw UsageError()
+
+      case "--fen":
+        guard fen == nil, index < arguments.endIndex else {
+          throw UsageError()
+        }
+
+        fen = arguments[index]
+        index += 1
 
       case "--casanchess":
         guard engineDepth == nil,
@@ -57,6 +68,7 @@ private struct Options {
     }
 
     self.engineDepth = engineDepth
+    self.fen = fen
     self.humanColor = humanColor
   }
 }
@@ -73,7 +85,20 @@ enum ChessCommand {
       Darwin.exit(1)
     }
 
-    let game = Game()
+    let game: Game
+    do {
+      let board: Board = if let fen = options.fen {
+        try Board(fen: fen)
+      } else {
+        .board
+      }
+
+      game = Game(board: board)
+    } catch {
+      fputs("\(error.localizedDescription)\n", stderr)
+      Darwin.exit(1)
+    }
+
     print(game)
 
     while case let .toMove(side) = game.status {
