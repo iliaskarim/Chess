@@ -27,6 +27,18 @@ Add `--black` to take Black. Casanchess plays White and moves first:
 swift run Chess --casanchess 4 --black
 ```
 
+## Syzygy tablebases
+
+Casanchess probes 3-5 piece Syzygy WDL files during search. Those files are large, so they are not in git. After a checkout, download them into `Sources/syzygy/`:
+
+```bash
+cd Sources/syzygy
+wget --mirror --no-parent --no-directories -e robots=off \
+  https://tablebase.lichess.ovh/tables/standard/3-4-5-wdl/
+```
+
+The next `swift build` or `swift run` copies every `.rtbw` file in that directory into the app bundle. DTZ files (`.rtbz`) are not used. Without the WDL files, Casanchess still plays, and endgames are evaluated by the network alone.
+
 ## Example output
 
 Scholar's mate:

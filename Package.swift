@@ -18,6 +18,9 @@ let package = Package(
       dependencies: [
         .product(name: "ChessCore", package: "chesscore"),
         .product(name: "Casanchess", package: "casanchessswift")
+      ],
+      resources: [
+        .copy("syzygy")
       ]
     )
   ]
