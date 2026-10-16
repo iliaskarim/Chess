@@ -6,11 +6,11 @@ extension Move {
   /// - Parameter notation: Move notation.
   init(notation: String) throws {
     switch notation {
-    case .castleLongNotation:
-      self = .castle(.long)
+    case .castlingQueensideNotation:
+      self = .castling(.queenside)
 
-    case .castleShortNotation:
-      self = .castle(.short)
+    case .castlingKingsideNotation:
+      self = .castling(.kingside)
 
     default:
       // SAN move text: optional piece, optional disambiguation file/rank, optional "x", destination, optional "=Q".
@@ -59,11 +59,11 @@ extension Move {
 
       self = .translation(.init(
         figure: figure,
+        targetSquare: targetSquare,
         isCapture: isCapture,
         promotion: promotion,
         disambiguationFile: squareFile,
-        disambiguationRank: squareRank,
-        targetSquare: targetSquare
+        disambiguationRank: squareRank
       ))
     }
   }

@@ -9,7 +9,7 @@ let package = Package(
     .macOS(.v10_15)
   ],
   dependencies: [
-    .package(url: "git@github.com:iliaskarim/ChessCore.git", branch: "develop")
+    .package(url: "git@github.com:iliaskarim/ChessCore.git", branch: "master")
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
