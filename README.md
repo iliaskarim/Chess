@@ -39,8 +39,10 @@ Casanchess probes 3-5 piece Syzygy WDL files during search. Those files are larg
 
 ```bash
 cd Sources/syzygy
-wget --mirror --no-parent --no-directories -e robots=off \
-  https://tablebase.lichess.ovh/tables/standard/3-4-5-wdl/
+base=https://tablebase.lichess.ovh/tables/standard/3-4-5-wdl
+curl -fsSL "$base/" \
+  | sed -n 's/.*href="\([^"]*\.rtbw\)".*/\1/p' \
+  | xargs -I{} curl -fL -O "$base/{}"
 ```
 
 The next `swift build` or `swift run` copies every `.rtbw` file in that directory into the app bundle. DTZ files (`.rtbz`) are not used. Without the WDL files, Casanchess still plays, and endgames are evaluated by the network alone.
