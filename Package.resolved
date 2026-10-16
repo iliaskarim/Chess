@@ -1,13 +1,22 @@
 {
-  "originHash" : "b52466cab64c95a1a25b94b7dd6ff7ad1c3374a53b1be1b99a8dece7ffe65b36",
+  "originHash" : "300f2fc61e4ba53edaaba3416afbccbc246434b1e581b637e414369fe77d32c1",
   "pins" : [
+    {
+      "identity" : "casanchessswift",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:iliaskarim/CasanchessSwift.git",
+      "state" : {
+        "revision" : "3da9264a55a8fa0dbd4b8116c63ea81a6213a536",
+        "version" : "1.0.0"
+      }
+    },
     {
       "identity" : "chesscore",
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:iliaskarim/ChessCore.git",
       "state" : {
-        "branch" : "master",
-        "revision" : "a986fc0f22669e7420cb8244e69a4fb38103cba4"
+        "branch" : "develop",
+        "revision" : "93a8fd06a83df10034c5d5a6f2c42652415ed93f"
       }
     }
   ],

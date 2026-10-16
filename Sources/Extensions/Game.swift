@@ -3,13 +3,13 @@ import ChessCore
 extension Game {
   func play(_ notation: String) throws {
     switch notation {
-    case .whiteVictoryNotation:
+    case Notation.Result.whiteVictory.rawValue:
       try endGame(victor: .white)
 
-    case .blackVictoryNotation:
+    case Notation.Result.blackVictory.rawValue:
       try endGame(victor: .black)
 
-    case .drawNotation:
+    case Notation.Result.draw.rawValue:
       try endGame(victor: nil)
 
     default:
@@ -23,7 +23,7 @@ extension Game {
         notation = String(notation.dropLast())
       }
 
-      try play(.init(notation: notation))
+      try play(AnyMove(notation: notation))
 
       let (actualCheck, actualCheckmate): (Bool, Bool) = switch board.status {
       case .check?:

@@ -5,7 +5,7 @@ An example of how to implement [ChessCore](https://github.com/iliaskarim/ChessCo
 ## Requirements
 
 - Swift 6+
-- macOS 10.15+
+- macOS 14+
 
 ## Quick start
 
@@ -14,6 +14,18 @@ swift run
 ```
 
 Type each move in standard algebraic notation at the `?` prompt.
+
+Play White against [Casanchess](https://github.com/iliaskarim/CasanchessSwift) at a fixed search depth:
+
+```bash
+swift run Chess --casanchess 4
+```
+
+Add `--black` to take Black. Casanchess plays White and moves first:
+
+```bash
+swift run Chess --casanchess 4 --black
+```
 
 ## Example output
 

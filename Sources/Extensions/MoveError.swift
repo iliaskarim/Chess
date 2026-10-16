@@ -4,7 +4,7 @@ import Foundation
 extension MoveError: @retroactive LocalizedError {
   public var errorDescription: String? {
     switch self {
-    case .ambiguousMove(let candidates):
+    case let .ambiguousMove(candidates):
       let n = candidates.count
       let moveWord = n == 1 ? "move" : "moves"
       let candidatesDescription = candidates.map(\.description).sorted().joined(separator: ", ")
@@ -12,6 +12,9 @@ extension MoveError: @retroactive LocalizedError {
 
     case .illegalMove:
       return "That move is not legal in this position."
+
+    case .illegalMoveIntoCheck:
+      return "That move leaves your king in check."
     }
   }
 }
